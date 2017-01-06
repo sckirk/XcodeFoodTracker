@@ -14,11 +14,11 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
     @IBOutlet var nameTextField: UITextField!
     @IBOutlet var mealNameLabel: UILabel!
     @IBOutlet var photoImageView: UIImageView!
-    
+    @IBOutlet var ratingControl: RatingControl!
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // Handle the text field’s user input through delegate callbacks.
         nameTextField.delegate = self
         // FYI: When a ViewController instance is loaded, it sets itself as the delegate of its nameTextField property.
@@ -78,10 +78,11 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
         imagePickerController.delegate = self
         present(imagePickerController, animated: true, completion: nil)
     }
-    
-    @IBAction func setDefaultLabelText(_ sender: UIButton) {
-        mealNameLabel.text = "default text"
-    }
+ 
+//    This method was used in an early section to show how to set default text in a label using a button. this functionality no longer persists in this app because the tutorial instructed us to delete the button that used to correspond to this code...
+//    @IBAction func setDefaultLabelText(_ sender: UIButton) {
+//        mealNameLabel.text = "default text"
+//    }
     
     
 }
