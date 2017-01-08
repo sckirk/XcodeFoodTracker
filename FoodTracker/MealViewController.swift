@@ -23,9 +23,13 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // Handle the text field’s user input through delegate callbacks.
         nameTextField.delegate = self
         // FYI: When a ViewController instance is loaded, it sets itself as the delegate of its nameTextField property.
+        
+        // Enable the Save button only if the text field has a valid Meal name.
+        updateSaveButtonState()
     }
     
     
@@ -44,7 +48,12 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
         return true
     }
     func textFieldDidEndEditing(_ textField: UITextField) {
-        // next iteration of code will come soon
+        updateSaveButtonState()
+        navigationItem.title = textField.text
+    }
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        // Disable the Save button while editing.
+        saveButton.isEnabled = false
     }
     
     
@@ -107,6 +116,13 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
 //        mealNameLabel.text = "default text"
 //    }
     
+    
+    //MARK: Private Methods
+    private func updateSaveButtonState() {
+        // Disable the Save button if the text field is empty.
+        let text = nameTextField.text ?? ""
+        saveButton.isEnabled = !text.isEmpty
+    }
     
 }
 
