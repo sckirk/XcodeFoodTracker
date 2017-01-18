@@ -96,7 +96,8 @@ class MealTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         
-        switch(segue.identifier ?? "") {
+        switch(segue.identifier ?? "")
+        {
             case "AddItem":
                 os_log("Adding a new meal.", log: OSLog.default, type: .debug)
             
