@@ -23,6 +23,10 @@ class MealTableViewController: UITableViewController {
         // Load any saved meals, otherwise load sample data.
         if let savedMeals = loadMeals() {
             meals += savedMeals
+            if meals.count == 0 { // this means that all of the meals were deleted by user...
+                // Reload the sample data.
+                loadSampleMeals()
+            }
         } else {
             // Load the sample data.
             loadSampleMeals()
